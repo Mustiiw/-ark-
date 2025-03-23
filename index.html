@@ -11,8 +11,10 @@
             background: linear-gradient(45deg, #00f, #0ff);
             font-family: Arial, sans-serif;
             overflow-x: hidden;
+            color: #fff;
         }
 
+        /* Neon animasyonlu arka plan */
         .background {
             position: fixed;
             top: 0;
@@ -30,60 +32,124 @@
             100% { opacity: 0.8; transform: scale(1); }
         }
 
+        /* Başlık */
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 60px;
+            color: #fff;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f;
+            animation: neonGlow 1.5s infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #00f; }
+            to { text-shadow: 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #00f; }
+        }
+
+        /* Arama çubuğu */
         .search-bar {
             text-align: center;
             padding: 20px;
         }
 
         .search-bar input {
-            width: 50%;
-            padding: 10px;
-            font-size: 18px;
-            border: 2px solid #fff;
-            border-radius: 5px;
-            background: rgba(0, 0, 0, 0.7);
+            width: 60%;
+            padding: 15px;
+            font-size: 20px;
+            border: 3px solid #fff;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.8);
             color: #fff;
+            box-shadow: 0 0 15px #0ff;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:hover, .search-bar input:focus {
+            box-shadow: 0 0 25px #0ff;
+            border-color: #0ff;
         }
 
         .search-bar input::placeholder {
             color: #ccc;
         }
 
+        /* Şarkı listesi */
         .song-list {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
 
         .song {
             background: #fff;
-            border: 3px solid #000;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 10px;
+            border: 4px solid #000;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 15px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
         .song:hover {
-            box-shadow: 0 0 15px #0ff;
-            transform: scale(1.02);
+            box-shadow: 0 0 20px #0ff, 0 0 30px #00f;
+            transform: scale(1.03);
+        }
+
+        .song img {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+            border-radius: 5px;
         }
 
         .song audio {
-            width: 200px;
+            width: 250px;
         }
 
         .song-title {
-            font-size: 18px;
+            font-size: 22px;
             color: #000;
+            font-weight: bold;
+            flex-grow: 1;
+        }
+
+        /* Banner */
+        .banner {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            animation: slideIn 2s infinite alternate;
+        }
+
+        .banner p {
+            margin: 0;
+            font-size: 18px;
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); }
+            to { transform: translateY(0); }
         }
     </style>
 </head>
 <body>
     <div class="background"></div>
+
+    <!-- Başlık -->
+    <div class="header">
+        <h1>MustiFY</h1>
+    </div>
 
     <!-- Arama Çubuğu -->
     <div class="search-bar">
@@ -93,6 +159,7 @@
     <!-- Şarkı Listesi -->
     <div class="song-list">
         <div class="song">
+            <img src="https://via.placeholder.com/60/000/fff?text=Kufi" alt="Kufi Duman">
             <span class="song-title">Kufi Duman</span>
             <audio controls>
                 <source src="Duman-KUFI-51.mp3" type="audio/mpeg">
@@ -100,6 +167,7 @@
             </audio>
         </div>
         <div class="song">
+            <img src="https://via.placeholder.com/60/000/fff?text=Herkesim" alt="Herkesim aqtaii">
             <span class="song-title">Herkesim aqtaii</span>
             <audio controls>
                 <source src="Aqtaii-Herkesim-96.mp3" type="audio/mpeg">
@@ -107,6 +175,7 @@
             </audio>
         </div>
         <div class="song">
+            <img src="https://via.placeholder.com/60/000/fff?text=Sabir" alt="Sabır ver Bergen">
             <span class="song-title">Sabır ver Bergen</span>
             <audio controls>
                 <source src="Bergen - Sabir ver.mp3" type="audio/mpeg">
@@ -114,19 +183,18 @@
             </audio>
         </div>
         <div class="song">
+            <img src="https://via.placeholder.com/60/000/fff?text=Anxiety" alt="Anxiety Dorchii">
             <span class="song-title">Anxiety Dorchii</span>
             <audio controls>
                 <source src="Doechii - Anxiety (Visualizer).mp3" type="audio/mpeg">
                 Tarayıcınız ses dosyasını desteklemiyor.
             </audio>
         </div>
-        <div class="song">
-            <span class="song-title">Seviyorum anlasana Umut Kartal</span>
-            <audio controls>
-                <source src="seviyorum_anlasana_umut_kartal.mp3" type="audio/mpeg">
-                Tarayıcınız ses dosyasını desteklemiyor.
-            </audio>
-        </div>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner">
+        <p>Şimdi Dinle, Neon Vibes!</p>
     </div>
 
     <!-- Arama Fonksiyonu -->
